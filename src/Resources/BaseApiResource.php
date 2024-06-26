@@ -1,11 +1,11 @@
 <?php
 
-    namespace Itrk\Helper;
+    namespace Itrk\Resources;
 
     /**
      * Ein Resource Object bildet die Nutzdaten ab, die unter "data" im Response von der API zurück kommen.
      */
-    class ItrkApiResource {
+    class BaseApiResource {
 
         protected array $data = [];
 

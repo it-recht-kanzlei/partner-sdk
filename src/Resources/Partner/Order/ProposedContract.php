@@ -1,9 +1,9 @@
 <?php
 
-    namespace Itrk\Helper\Resources\Partner;
+    namespace Itrk\Resources\Partner\Order;
 
-    use Itrk\Helper\ItrkApiResource;
-    use Itrk\Helper\Resources\Document;
+    use Itrk\Resources\BaseApiResource;
+    use Itrk\Resources\PublicData\Document;
 
     /**
      * Vorläufige Vertragsdaten
@@ -14,13 +14,13 @@
      * @property array       $docs                  Dokumente
      * @property null|string $contract_minimum_date Mindestvertragslaufzeit
      */
-    class PreContract extends ItrkApiResource {
+    class ProposedContract extends BaseApiResource {
 
         /** @var array|null|Document[] $documents */
         protected ?array $documents = null;
 
         /**
-         * @return array|ItrkApiResource[]|null|Document[]
+         * @return array|BaseApiResource[]|null|Document[]
          */
         public function documents(): ?array {
             $this->documents ??= Document::fabricate($this->docs);

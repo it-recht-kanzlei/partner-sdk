@@ -1,13 +1,12 @@
 <?php
 
-    namespace Itrk\Helper\Api;
+    namespace Itrk\Api;
 
-    use Itrk\Helper\Curl;
-    use Itrk\Helper\ItrkApi;
-    use Itrk\Helper\ItrkApiResource;
-    use Itrk\Helper\Resources\Partner\Contract;
-    use Itrk\Helper\Resources\Partner\Order;
-    use Itrk\Helper\Resources\Partner\PreOrder;
+    use Itrk\Resources\BaseApiResource;
+    use Itrk\Resources\Partner\Order\Contract;
+    use Itrk\Resources\Partner\Order\Order;
+    use Itrk\Resources\Partner\Order\ProposedOrder;
+    use Itrk\System\Net\Curl;
     use function Itrk\totp;
 
     /**
@@ -15,7 +14,7 @@
      * - Bestellung einleiten (1) und ausführen (2)
      * - Verträge abrufe
      */
-    class PartnerApi extends ItrkApi {
+    class PartnerApi extends BaseApi {
 
         protected string $partnerToken = '';
 
@@ -91,10 +90,10 @@
          *
          * @param array $data
          *
-         * @return ItrkApiResource|PreOrder
+         * @return BaseApiResource|ProposedOrder
          */
-        public function initOrder(array $data): PreOrder {
-            return $this->curl()->post('order', $data)->send()->toResource(PreOrder::class);
+        public function initOrder(array $data): ProposedOrder {
+            return $this->curl()->post('order', $data)->send()->toResource(ProposedOrder::class);
         }
 
         /**
@@ -102,7 +101,7 @@
          *
          * @param array $data
          *
-         * @return ItrkApiResource|Order
+         * @return BaseApiResource|Order
          */
         public function placeOrder(array $data): Order {
             return $this->curl()->post('order', $data)->send()->toResource(Order::class);

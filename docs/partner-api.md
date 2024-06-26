@@ -56,7 +56,7 @@ $pre_order = $partner_api->initOrder(
 <summary>Klicken um Beispiel-Response anzuzeigen</summary>
 
 ```php
-Itrk\Helper\Resources\Partner\PreOrder Object
+Itrk\Resources\Partner\Order\ProposedOrder Object
 (
     [data:protected] => Array
         (
@@ -219,7 +219,7 @@ $partner_api->placeOrder($order_confirm_data);
 <summary>Hier klicken, um Beispiel-Response anzuzeigen</summary>
 
 ```php
-Itrk\Helper\Resources\Partner\Order Object
+Itrk\Resources\Partner\Order\Order Object
 (
     [data:protected] => Array
         (
@@ -326,7 +326,7 @@ Verträge kommen als Array von Contract Objekten zurück.
 ```php
 Array
 (
-    [0] => Itrk\Helper\Resources\Partner\Contract Object
+    [0] => Itrk\Resources\Partner\Order\Contract Object
         (
             [data:protected] => Array
                 (
@@ -343,7 +343,7 @@ Array
 
         )
 
-    [1] => Itrk\Helper\Resources\Partner\Contract Object
+    [1] => Itrk\Resources\Partner\Order\Contract Object
         (
             [data:protected] => Array
                 (
@@ -360,7 +360,7 @@ Array
 
         )
 
-    [2] => Itrk\Helper\Resources\Partner\Contract Object
+    [2] => Itrk\Resources\Partner\Order\Contract Object
         (
             [data:protected] => Array
                 (

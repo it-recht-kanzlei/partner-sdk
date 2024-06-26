@@ -2,7 +2,7 @@
 
     namespace Itrk;
 
-    use Itrk\Helper\Config;
+    use Itrk\System\Config;
 
     /**
      * Baut eine URL für den hinterlegten Host und gibt sie zurück

@@ -1,8 +1,8 @@
 <?php
 
-    namespace Itrk\Helper\Resources\Partner;
+    namespace Itrk\Resources\Partner\Order;
 
-    use Itrk\Helper\ItrkApiResource;
+    use Itrk\Resources\BaseApiResource;
 
     /**
      * Vorläufige Kundendaten
@@ -16,6 +16,6 @@
      * @property string     $company_email E-Mail Adresse
      * @property string     $hash          Hash
      */
-    class PreCustomer extends ItrkApiResource {
+    class ProposedCustomer extends BaseApiResource {
 
     }

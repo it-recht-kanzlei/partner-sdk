@@ -1,18 +1,17 @@
 <?php
 
-    namespace Itrk\Helper\Api;
+    namespace Itrk\Api;
 
-    use Itrk\Helper\Curl;
-    use Itrk\Helper\ItrkApi;
-    use Itrk\Helper\ItrkApiResource;
-    use Itrk\Helper\Resources\Country;
-    use Itrk\Helper\Resources\Document;
+    use Itrk\Resources\BaseApiResource;
+    use Itrk\Resources\PublicData\Country;
+    use Itrk\Resources\PublicData\Document;
+    use Itrk\System\Net\Curl;
 
     /**
      * Diese Klasse stellt Methoden bereit für den Zugriff auf die offene ITRK API.
      * Eine Authentifizierung ist hier für keinen der Endpoints erforderlich.
      */
-    class GetApi extends ItrkApi {
+    class PublicData extends BaseApi {
 
         /**
          * Parameterisiert die cUrl Verbindung und gibt sie zurück
@@ -26,7 +25,7 @@
         /**
          * Gibt eine Liste von Dokumenten zurück die im Bestellprozess gebucht werden können
          *
-         * @return ItrkApiResource[]|Document[]
+         * @return BaseApiResource[]|Document[]
          */
         public function documents(): array {
             return $this->curl()->get('documents')->send()->toResources(Document::class);
@@ -37,7 +36,7 @@
          *
          * @param int $id
          *
-         * @return ItrkApiResource|Document
+         * @return BaseApiResource|Document
          */
         public function document(int $id) {
             return $this->curl()->get('document')->send(['id' => $id])->toResource(Document::class);
@@ -46,7 +45,7 @@
         /**
          * Gibt eine Liste von Ländern mit deren Ländercode zurück
          *
-         * @return ItrkApiResource[]|Country[]
+         * @return BaseApiResource[]|Country[]
          */
         public function countries(): array {
             return $this->curl()->get('countries')->send()->toResources(Country::class);

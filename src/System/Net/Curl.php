@@ -1,7 +1,9 @@
 <?php
 
-    namespace Itrk\Helper;
+    namespace Itrk\System\Net;
 
+    use Itrk\Api\BaseApiResponse;
+    use Itrk\System\Config;
     use function Itrk\url;
 
     /**
@@ -291,9 +293,9 @@
          *
          * @param array $url_params Optional: request parameter
          *
-         * @return ItrkApiResponse
+         * @return BaseApiResponse
          */
-        public function send(array $url_params = []): ItrkApiResponse {
+        public function send(array $url_params = []): BaseApiResponse {
             $this->addUrlParams($url_params);
             $path = $this->path;
             if ($this->staticUrlPath !== '') {
@@ -310,7 +312,7 @@
             curl_close($ch);
 
 
-            return new ItrkApiResponse($this->lastResponse);
+            return new BaseApiResponse($this->lastResponse);
         }
 
         /**

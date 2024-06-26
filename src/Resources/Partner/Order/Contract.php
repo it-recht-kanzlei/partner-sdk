@@ -1,8 +1,8 @@
 <?php
 
-    namespace Itrk\Helper\Resources\Partner;
+    namespace Itrk\Resources\Partner\Order;
 
-    use Itrk\Helper\ItrkApiResource;
+    use Itrk\Resources\BaseApiResource;
 
     /**
      * Vertragsdaten
@@ -14,6 +14,6 @@
      * @property string      $contract_begin                  Datum des Vertragsbeginns
      * @property null|string $contract_minimum_date           Mindestvertragslaufzeit
      */
-    class Contract extends ItrkApiResource {
+    class Contract extends BaseApiResource {
 
     }

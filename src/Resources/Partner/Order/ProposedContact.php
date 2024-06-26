@@ -1,8 +1,8 @@
 <?php
 
-    namespace Itrk\Helper\Resources\Partner;
+    namespace Itrk\Resources\Partner\Order;
 
-    use Itrk\Helper\ItrkApiResource;
+    use Itrk\Resources\BaseApiResource;
 
     /**
      * Vorläufige Kontakt- / Benutzerdaten
@@ -13,6 +13,6 @@
      * @property string     $name
      * @property string     $hash
      */
-    class PreContact extends ItrkApiResource {
+    class ProposedContact extends BaseApiResource {
 
     }

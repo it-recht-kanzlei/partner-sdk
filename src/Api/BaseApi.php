@@ -1,13 +1,15 @@
 <?php
 
-    namespace Itrk\Helper;
+    namespace Itrk\Api;
+
+    use Itrk\System\Net\Curl;
 
     /**
      * Allgemeine API Klasse.
      * Die entsprechenden Kindklassen überschreiben ggf. die curl() Methode und deklarieren
      * je endpoint eine Methode.
      */
-    class ItrkApi {
+    class BaseApi {
 
         /**
          * @return Curl

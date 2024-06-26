@@ -1,6 +1,6 @@
 <?php
 
-    namespace Itrk\Helper;
+    namespace Itrk\System;
 
     /**
      * Bietet die Möglichkeit, globale Konfigurationen vorzunehmen

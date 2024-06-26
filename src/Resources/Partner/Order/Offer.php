@@ -1,8 +1,8 @@
 <?php
 
-    namespace Itrk\Helper\Resources\Partner;
+    namespace Itrk\Resources\Partner\Order;
 
-    use Itrk\Helper\ItrkApiResource;
+    use Itrk\Resources\BaseApiResource;
 
     /**
      * @property string  $order_id    Bestellnummer
@@ -11,18 +11,18 @@
      * @property string  $order       Base64-String der an uns zurückgesendet werden muss, um die Order zu platzieren
      * @property string  $checksum    Prüfsumme, die zusammen mit $order an uns zurück gesendet werden muss
      */
-    class Offer extends ItrkApiResource {
+    class Offer extends BaseApiResource {
 
-        /** @var array|null|PreContract */
+        /** @var array|null|ProposedContract */
         protected ?array $contracts = null;
 
         /**
          * Gibt vorläufige Verträge zurück
          *
-         * @return array|null|PreContract
+         * @return array|null|ProposedContract
          */
         public function contracts(): ?array {
-            $this->contracts ??= PreContract::fabricate($this->contracts);
+            $this->contracts ??= ProposedContract::fabricate($this->contracts);
 
             return $this->contracts;
         }

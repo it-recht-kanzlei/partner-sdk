@@ -1,8 +1,8 @@
 <?php
 
-    namespace Itrk\Helper\Resources\Partner;
+    namespace Itrk\Resources\Partner\Order;
 
-    use Itrk\Helper\ItrkApiResource;
+    use Itrk\Resources\BaseApiResource;
 
     /**
      * Daten der ausgeführten Bestellung
@@ -11,7 +11,7 @@
      * @param float  $total
      * @param array  $contracts
      */
-    class Order extends ItrkApiResource {
+    class Order extends BaseApiResource {
 
         /** @var array|null|Contract[] */
         protected ?array $contracts = null;

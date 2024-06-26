@@ -2,13 +2,13 @@
 
     namespace Itrk\SDK\PartnerAPI;
 
-    use Itrk\Helper\Api\PartnerApi;
-    use Itrk\Helper\Config;
-    use Itrk\Helper\Curl;
-    use Itrk\Helper\ItrkApiResource;
-    use Itrk\Helper\Resources\Partner\Contract;
-    use Itrk\Helper\Resources\Partner\Order;
-    use Itrk\Helper\Resources\Partner\PreOrder;
+    use Itrk\Api\PartnerApi;
+    use Itrk\Resources\BaseApiResource;
+    use Itrk\Resources\Partner\Order\Contract;
+    use Itrk\Resources\Partner\Order\Order;
+    use Itrk\Resources\Partner\Order\ProposedOrder;
+    use Itrk\System\Config;
+    use Itrk\System\Net\Curl;
     use function Itrk\totp;
     use function Itrk\url;
 
@@ -159,9 +159,9 @@
          * @param array  $documents
          * @param array  $bundles
          *
-         * @return ItrkApiResource|PreOrder
+         * @return BaseApiResource|ProposedOrder
          */
-        public function initOrder(string $email, string $display_name, string $first_name, string $last_name, string $street, string $zip, string $city, int $country = Config::COUNTRY_GERMANY, int $salut = Config::SALUT_OTHERS, array $documents = [], array $bundles = []): PreOrder {
+        public function initOrder(string $email, string $display_name, string $first_name, string $last_name, string $street, string $zip, string $city, int $country = Config::COUNTRY_GERMANY, int $salut = Config::SALUT_OTHERS, array $documents = [], array $bundles = []): ProposedOrder {
             $order_data = [
                 'order' => [
                     'customer' => [
@@ -194,7 +194,7 @@
          * @param array $confirm_data
          *
          * @return Order
-         * @see PreOrder::confirmData()
+         * @see ProposedOrder::confirmData()
          */
         public function placeOrder(array $confirm_data): Order {
             return $this->api()->placeOrder($confirm_data);

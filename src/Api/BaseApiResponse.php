@@ -1,13 +1,14 @@
 <?php
 
-    namespace Itrk\Helper;
+    namespace Itrk\Api;
 
+    use Itrk\Resources\BaseApiResource;
     use function Itrk\get_array_item;
 
     /**
      * Diese Klasse kapselt den Response der Api in ein dafür vorgesehenes (hiervon erbendes) Objekt.
      */
-    class ItrkApiResponse {
+    class BaseApiResponse {
 
         protected string $body = '';
         protected array $data = [];
@@ -62,10 +63,10 @@
          *
          * @param string $class
          *
-         * @return ItrkApiResource
+         * @return BaseApiResource
          */
-        public function toResource(string $class = ItrkApiResource::class): ItrkApiResource {
-            $class = (class_exists($class) ? $class : ItrkApiResource::class);
+        public function toResource(string $class = BaseApiResource::class): BaseApiResource {
+            $class = (class_exists($class) ? $class : BaseApiResource::class);
 
             return new $class($this->data());
         }
@@ -75,10 +76,10 @@
          *
          * @param string $class
          *
-         * @return array|ItrkApiResource[]
+         * @return array|BaseApiResource[]
          */
-        public function toResources(string $class = ItrkApiResource::class): array {
-            return ItrkApiResource::fabricate($this->data(), $class);
+        public function toResources(string $class = BaseApiResource::class): array {
+            return BaseApiResource::fabricate($this->data(), $class);
         }
 
     }

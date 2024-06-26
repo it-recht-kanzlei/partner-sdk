@@ -1,8 +1,8 @@
 <?php
 
-    namespace Itrk\Helper\Resources\Partner;
+    namespace Itrk\Resources\Partner\Order;
 
-    use Itrk\Helper\ItrkApiResource;
+    use Itrk\Resources\BaseApiResource;
 
     /**
      * Vorläufige Bestelldaten
@@ -11,11 +11,11 @@
      * @param array $customer Kundendaten
      * @param array $contact  Kontaktdaten / Benutzerdaten
      */
-    class PreOrder extends ItrkApiResource {
+    class ProposedOrder extends BaseApiResource {
 
         protected ?Offer $offer;
-        protected ?PreContact $contact;
-        protected ?PreCustomer $customer;
+        protected ?ProposedContact $contact;
+        protected ?ProposedCustomer $customer;
 
         /**
          * @return Offer|null
@@ -27,19 +27,19 @@
         }
 
         /**
-         * @return PreContact|null
+         * @return ProposedContact|null
          */
-        public function contact(): ?PreContact {
-            $this->contact ??= new PreContact($this->get('contact'));
+        public function contact(): ?ProposedContact {
+            $this->contact ??= new ProposedContact($this->get('contact'));
 
             return $this->contact;
         }
 
         /**
-         * @return PreCustomer|null
+         * @return ProposedCustomer|null
          */
-        public function customer(): ?PreCustomer {
-            $this->customer ??= new PreCustomer($this->get('customer'));
+        public function customer(): ?ProposedCustomer {
+            $this->customer ??= new ProposedCustomer($this->get('customer'));
 
             return $this->customer;
         }

@@ -4,7 +4,7 @@ Es gibt eine Reihe offener Endpoints die verwendet werden können. Verwenden Sie
 `GetApi` Objekt.
 
 ```php
-$get_api = new \Itrk\Helper\Api\GetApi();
+$public_api = new \Itrk\Api\PublicData();
 ```
 
 > Hinweis: unsere offenen Endpoints erfordern keine Authentifizierung.
@@ -17,19 +17,19 @@ Dieser Endpunkt liefert Informationen über Dokumente die über die Partner-API 
 
 ````php
 # Alle Dokumente abfragen
-$get_api->documents();
+$public_api->documents();
 ````
 
 ## Einzelnes Dokument abfragen
 
 ````php
-$get_api->document(123);
+$public_api->document(123);
 ````
 
 ### Beispiel-Response eines einzelnen Dokuments
 
 ```php
-Itrk\Helper\Resources\Document Object
+Itrk\Resources\PublicData\Document Object
 (
     [data:protected] => Array
         (
@@ -53,6 +53,6 @@ Dieser Endpoint gibt eine Liste von `Country` Objekten zurück, die die numerisc
 
 ````php
 # Ländercode-Mapping abfragen
-$get_api->countries();
+$public_api->countries();
 ````
 
