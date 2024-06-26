@@ -1,0 +1,22 @@
+{
+    "name": "it-recht-kanzlei/itrk-partner-sdk",
+    "type": "library",
+    "version": "1.0",
+    "description": "SDK zur Verwendung der ITRK Partner-API und zum Ausführen und Abrufen von Bestellungen.",
+    "keywords": [
+        "ITKR",
+        "SDK",
+        "IT-Recht",
+        "Partner-API"
+    ],
+    "homepage": "https://www.it-recht-kanzlei.de/",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Itrk\\": "src/"
+        }
+    }
+}
