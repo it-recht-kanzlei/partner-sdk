@@ -16,9 +16,13 @@
      */
     class PreContract extends ItrkApiResource {
 
+        /** @var array|null|Document[] $documents */
         protected ?array $documents = null;
 
-        public function documents() {
+        /**
+         * @return array|ItrkApiResource[]|null|Document[]
+         */
+        public function documents(): ?array {
             $this->documents ??= Document::fabricate($this->docs);
 
             return $this->documents;

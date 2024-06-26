@@ -13,8 +13,13 @@
      */
     class Order extends ItrkApiResource {
 
+        /** @var array|null|Contract[] */
         protected ?array $contracts = null;
+
+        /** @var Contact|null $contact */
         protected ?Contact $contact;
+
+        /** @var Customer|null $customer */
         protected ?Customer $customer;
 
         /**
@@ -26,12 +31,18 @@
             return $this->contracts;
         }
 
+        /**
+         * @return Contact|null
+         */
         public function contact(): ?Contact {
             $this->contact ??= new Contact($this->get('contact'));
 
             return $this->contact;
         }
 
+        /**
+         * @return Customer|null
+         */
         public function customer(): ?Customer {
             $this->customer ??= new Customer($this->get('customer'));
 

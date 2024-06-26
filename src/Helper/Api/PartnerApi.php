@@ -19,10 +19,18 @@
 
         protected string $partnerToken = '';
 
+        /**
+         * @param string $partner_token
+         */
         public function __construct(string $partner_token) {
             $this->partnerToken = $partner_token;
         }
 
+        /**
+         * Parameterisiert die cUrl Verbindung und gibt sie zurück
+         *
+         * @return Curl
+         */
         public function curl(): Curl {
             return parent::curl()
                 ->addHeaders([
@@ -74,7 +82,7 @@
          *
          * @return Contract[]
          */
-        public function getContractsByOrderId(string $order_id) {
+        public function getContractsByOrderId(string $order_id): array {
             return $this->contracts(null, 0, $order_id);
         }
 

@@ -4,6 +4,9 @@
 
     use function Itrk\Functions\url;
 
+    /**
+     * cUrl Helper Klasse für die Verbindung zur API
+     */
     class Curl {
 
         /** @var string URL zu der die Verbindung aufgebaut werden soll */
@@ -13,7 +16,7 @@
         protected array $lastInfo = [];
         /** @var array Die cUrl Options, die beim zuletzt ausgeführten request verwendet wurden */
         protected array $lastOptions = [];
-        /** @var null|string Der Response des zuletzt abgesendeten cUrl requests */
+        /** @var null|bool|string Der Response des zuletzt abgesendeten cUrl requests */
         protected $lastResponse;
 
         /** @var string Ggf. erfordern manche Testing-Hosts Basic Auth */
@@ -54,6 +57,11 @@
             $this->setBasicAuth(Config::$basicAuthUsername, Config::$basicAuthPassword);
         }
 
+        /**
+         * Gibt ein Curl Objekt zurück (und ermöglicht dabei das chaining)
+         *
+         * @return self
+         */
         public static function create(): self {
             return new self();
         }
@@ -85,7 +93,7 @@
          *
          * @return $this
          */
-        public function setUrl(string $url) {
+        public function setUrl(string $url): self {
             $this->url = $url;
 
             return $this;

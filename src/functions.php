@@ -5,17 +5,6 @@
     use Itrk\Helper\Config;
 
     /**
-     * @param string $to
-     *
-     * @return string
-     */
-    function itrk_path(string $to = ''): string {
-        $to = trim($to, DIRECTORY_SEPARATOR);
-
-        return ITRK_DIR . ($to === '' ? '' : DIRECTORY_SEPARATOR . $to);
-    }
-
-    /**
      * Baut eine URL für den hinterlegten Host und gibt sie zurück
      *
      * @param string      $to
@@ -45,7 +34,7 @@
      * @deprecated Verwenden Sie stattdessen
      *
      */
-    function legacy_token() {
+    function legacy_token(): string {
         return sha1(date('YmdH', time()) . 'jVyDG2gMJVK4Xhiu');
     }
 
@@ -66,7 +55,7 @@
      */
     function totp(string $data = '', ?string $secret = null, ?int $period = 3600, int $maxlength = 0): string {
         $secret = $secret ?? Config::TOTP_SECRET;
-        $hash   = hash('sha256', (string)(int)(time() / $period) . $secret . $data);
+        $hash   = hash('sha256', (int)(time() / $period) . $secret . $data);
 
         return ($maxlength ? substr($hash, 0, abs($maxlength)) : $hash);
     }

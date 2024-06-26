@@ -12,6 +12,9 @@
     use function Itrk\Functions\totp;
     use function Itrk\Functions\url;
 
+    /**
+     * Stellt Methoden bereit um Bestellungen auszuführen und Verträge abzurufen.
+     */
     class PartnerApiSdk {
 
         /** @var int Ihre Partner-ID */
@@ -84,24 +87,6 @@
         }
 
         /**
-         * Zum Ausführen eines cUrl Requests
-         *
-         * @param string            $path                der URL Pfad
-         * @param array             $url_params          Optional: request parameter
-         * @param string            $method              Request Methode
-         * @param array|string|null $body                Der Body der mitgesendet werden soll - standardmäßig NULL, es
-         *                                               wird also kein Body gesendet. Body kann ein string sein, oder
-         *                                               ein array (welches json-encoded wird).
-         * @param array             $headers             Optional: zusätzliche Header
-         * @param array             $custom_curl_options Optional: hiermit können zusätzliche cUrl Optionen gesetzt und
-         *                                               ggf. Standard-Optionen überschrieben werden.
-         *
-         * @return bool|string
-         */
-        public function curl(string $path, array $url_params = [], string $method = 'GET', $body = null, array $headers = [], array $custom_curl_options = []) {
-        }
-
-        /**
          * Gibt ein Array zurück, wenn erwartet wird, dass der response ein gültiges JSON ist.
          *
          * @param $response
@@ -138,9 +123,9 @@
          * @param string $order_id
          * @param bool   $with_documents
          *
-         * @return array|mixed
+         * @return array|Contract[]
          */
-        public function getContractsByOrderId(string $order_id, bool $with_documents = false) {
+        public function getContractsByOrderId(string $order_id, bool $with_documents = false): array {
             return $this->contracts(null, 0, $order_id, [], $with_documents);
         }
 
@@ -152,9 +137,9 @@
          * @param int      $offset
          * @param bool     $with_documents
          *
-         * @return array|mixed
+         * @return array|Contract[]
          */
-        public function getContractsWithIds(array $ids, ?int $limit = null, int $offset = 0, bool $with_documents = false) {
+        public function getContractsWithIds(array $ids, ?int $limit = null, int $offset = 0, bool $with_documents = false): array {
             return $this->contracts($limit, $offset, '', $ids, $with_documents);
         }
 
@@ -176,7 +161,7 @@
          *
          * @return ItrkApiResource|PreOrder
          */
-        public function initOrder(string $email, string $display_name, string $first_name, string $last_name, string $street, string $zip, string $city, int $country = Config::COUNTRY_GERMANY, int $salut = Config::SALUT_OTHERS, array $documents = [], array $bundles = []) {
+        public function initOrder(string $email, string $display_name, string $first_name, string $last_name, string $street, string $zip, string $city, int $country = Config::COUNTRY_GERMANY, int $salut = Config::SALUT_OTHERS, array $documents = [], array $bundles = []): PreOrder {
             $order_data = [
                 'order' => [
                     'customer' => [
@@ -211,7 +196,7 @@
          * @return Order
          * @see PreOrder::confirmData()
          */
-        public function placeOrder(array $confirm_data) {
+        public function placeOrder(array $confirm_data): Order {
             return $this->api()->placeOrder($confirm_data);
         }
 

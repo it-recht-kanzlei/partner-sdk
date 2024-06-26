@@ -14,6 +14,11 @@
      */
     class GetApi extends ItrkApi {
 
+        /**
+         * Parameterisiert die cUrl Verbindung und gibt sie zurück
+         *
+         * @return Curl
+         */
         public function curl(): Curl {
             return parent::curl()->prependUrlPath('itrk-api/get');
         }
@@ -23,7 +28,7 @@
          *
          * @return ItrkApiResource[]|Document[]
          */
-        public function documents() {
+        public function documents(): array {
             return $this->curl()->get('documents')->send()->toResources(Document::class);
         }
 
@@ -43,7 +48,7 @@
          *
          * @return ItrkApiResource[]|Country[]
          */
-        public function countries() {
+        public function countries(): array {
             return $this->curl()->get('countries')->send()->toResources(Country::class);
         }
 

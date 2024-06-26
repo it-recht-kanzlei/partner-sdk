@@ -2,6 +2,9 @@
 
     namespace Itrk\Helper;
 
+    /**
+     * Bietet die Möglichkeit, globale Konfigurationen vorzunehmen
+     */
     class Config {
 
         public const TOTP_SECRET = 'YpAGuzXGin2cGs7hvHj5Ltk3yiFsPZso';
@@ -23,18 +26,42 @@
         protected static string $hostname = 'it-recht-kanzlei.de';
         protected static bool $sandboxMode = false;
 
+        /**
+         * Hostname festlegen
+         *
+         * @param string $hostname
+         *
+         * @return void
+         */
         public static function setHostname(string $hostname) {
             self::$hostname = $hostname;
         }
 
-        public static function getHostname() {
+        /**
+         * Hostname abrufen
+         *
+         * @return string
+         */
+        public static function getHostname(): string {
             return self::$hostname;
         }
 
+        /**
+         * Sandbox-Modus aktivieren/deaktivieren
+         *
+         * @param bool $set
+         *
+         * @return void
+         */
         public static function setSandboxMode(bool $set = true) {
             self::$sandboxMode = $set;
         }
 
+        /**
+         * Prüft, ob der Sandbox-Modus aktiv ist
+         *
+         * @return bool
+         */
         public static function isSandboxMode(): bool {
             return self::$sandboxMode;
         }

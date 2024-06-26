@@ -13,8 +13,14 @@
      */
     class Offer extends ItrkApiResource {
 
+        /** @var array|null|PreContract */
         protected ?array $contracts = null;
 
+        /**
+         * Gibt vorläufige Verträge zurück
+         *
+         * @return array|null|PreContract
+         */
         public function contracts(): ?array {
             $this->contracts ??= PreContract::fabricate($this->contracts);
 

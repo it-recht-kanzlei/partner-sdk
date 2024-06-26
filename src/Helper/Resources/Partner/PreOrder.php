@@ -17,25 +17,37 @@
         protected ?PreContact $contact;
         protected ?PreCustomer $customer;
 
+        /**
+         * @return Offer|null
+         */
         public function offer(): ?Offer {
             $this->offer ??= new Offer($this->get('offer'));
 
             return $this->offer;
         }
 
+        /**
+         * @return PreContact|null
+         */
         public function contact(): ?PreContact {
             $this->contact ??= new PreContact($this->get('contact'));
 
             return $this->contact;
         }
 
+        /**
+         * @return PreCustomer|null
+         */
         public function customer(): ?PreCustomer {
             $this->customer ??= new PreCustomer($this->get('customer'));
 
             return $this->customer;
         }
 
-        public function orderId() {
+        /**
+         * @return string
+         */
+        public function orderId(): string {
             return $this->offer()->order_id;
         }
 
@@ -45,8 +57,8 @@
          *
          * @return array[]
          */
-        public function confirmData() {
-            return ['order' => ['data' => (string)$this->offer()->order, 'checksum' => (string)$this->offer()->checksum]];
+        public function confirmData(): array {
+            return ['order' => ['data' => $this->offer()->order, 'checksum' => $this->offer()->checksum]];
         }
 
     }
