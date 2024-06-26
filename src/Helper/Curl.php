@@ -2,7 +2,7 @@
 
     namespace Itrk\Helper;
 
-    use function Itrk\Functions\url;
+    use function Itrk\url;
 
     /**
      * cUrl Helper Klasse für die Verbindung zur API

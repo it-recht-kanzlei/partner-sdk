@@ -8,7 +8,7 @@
     use Itrk\Helper\Resources\Partner\Contract;
     use Itrk\Helper\Resources\Partner\Order;
     use Itrk\Helper\Resources\Partner\PreOrder;
-    use function Itrk\Functions\totp;
+    use function Itrk\totp;
 
     /**
      * Stellt Methoden für den Zugriff auf alle Partner-relevanten Endpoints bereit:

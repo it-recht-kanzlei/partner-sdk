@@ -1,6 +1,6 @@
 <?php
 
-    namespace Itrk\Functions;
+    namespace Itrk;
 
     use Itrk\Helper\Config;
 

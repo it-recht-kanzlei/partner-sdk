@@ -2,7 +2,7 @@
 
     namespace Itrk\Helper;
 
-    use function Itrk\Functions\get_array_item;
+    use function Itrk\get_array_item;
 
     /**
      * Diese Klasse kapselt den Response der Api in ein dafür vorgesehenes (hiervon erbendes) Objekt.

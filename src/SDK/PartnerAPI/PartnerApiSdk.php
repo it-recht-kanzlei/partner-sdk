@@ -9,8 +9,8 @@
     use Itrk\Helper\Resources\Partner\Contract;
     use Itrk\Helper\Resources\Partner\Order;
     use Itrk\Helper\Resources\Partner\PreOrder;
-    use function Itrk\Functions\totp;
-    use function Itrk\Functions\url;
+    use function Itrk\totp;
+    use function Itrk\url;
 
     /**
      * Stellt Methoden bereit um Bestellungen auszuführen und Verträge abzurufen.
