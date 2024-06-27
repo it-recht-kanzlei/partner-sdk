@@ -53,7 +53,7 @@
      *
      * @return string
      */
-    function totp(string $data = '', ?string $secret = null, ?int $period = 3600, int $maxlength = 0): string {
+    function totp(string $data = '', ?string $secret = null, ?int $period = 3600, int $maxlength = 20): string {
         $secret = $secret ?? Config::TOTP_SECRET;
         $hash   = hash('sha256', (int)(time() / $period) . $secret . $data);
 
