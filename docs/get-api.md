@@ -1,7 +1,7 @@
 # Offene API
 
 Es gibt eine Reihe offener Endpoints die verwendet werden können. Verwenden Sie hierfür das
-`GetApi` Objekt.
+`PublicData` Objekt.
 
 ```php
 $public_api = new \Itrk\Api\PublicData();
