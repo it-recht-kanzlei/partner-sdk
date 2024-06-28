@@ -79,16 +79,14 @@
             return $this->has($offset);
         }
 
-        public function offsetGet($offset) {
+        #[\ReturnTypeWillChange] public function offsetGet($offset) {
             return $this->get($offset);
         }
 
         public function offsetSet($offset, $value) {
-            return;
         }
 
         public function offsetUnset($offset) {
-            return;
         }
 
     }
