@@ -14,7 +14,7 @@
     class Offer extends BaseApiResource {
 
         /** @var array|null|ProposedContract */
-        protected ?array $contracts = null;
+        protected ?array $offered_contracts = null;
 
         /**
          * Gibt vorläufige Verträge zurück
