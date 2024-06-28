@@ -17,12 +17,15 @@
         }
 
         /**
-         * @param array  $data
+         * @param array|mixed  $data
          * @param string $class
          *
          * @return array|self[]
          */
-        public static function fabricate(array $data, $class = self::class): array {
+        public static function fabricate($data, $class = self::class): array {
+            if(!is_array($data)) {
+                return [];
+            }
             $class     = (class_exists($class) ? $class : self::class);
             $resources = [];
             foreach ($data as $resource_data) {
