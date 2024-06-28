@@ -43,6 +43,8 @@
             ],
             CURLOPT_CUSTOMREQUEST  => 'GET',
             CURLOPT_FRESH_CONNECT  => true,
+
+            # Im Fall von etwaigen Verbindungsproblemen, kann es mitunter hilfreich sein, diverse Checks temporär zu deaktiveren
             // CURLOPT_SSL_VERIFYHOST       => false,
             // CURLOPT_SSL_VERIFYPEER       => false,
             // CURLOPT_SSL_VERIFYSTATUS     => false,

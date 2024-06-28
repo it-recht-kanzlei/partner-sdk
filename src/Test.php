@@ -2,6 +2,6 @@
 
     namespace Itrk;
 
-    class Test{
+    class Test {
 
     }

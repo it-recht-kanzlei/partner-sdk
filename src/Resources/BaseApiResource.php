@@ -5,8 +5,14 @@
     /**
      * Ein Resource Object bildet die Nutzdaten ab, die unter "data" im Response von der API zurück kommen.
      */
-    class BaseApiResource {
+    class BaseApiResource implements \ArrayAccess {
 
+        /**
+         * Diese property hält die Nutzdaten, die die API zurückliefert (also das was unter "data" im JSON zu finden
+         * ist).
+         *
+         * @var array
+         */
         protected array $data = [];
 
         /**
@@ -17,13 +23,13 @@
         }
 
         /**
-         * @param array|mixed  $data
-         * @param string $class
+         * @param array|mixed $data
+         * @param string      $class
          *
          * @return array|self[]
          */
         public static function fabricate($data, $class = self::class): array {
-            if(!is_array($data)) {
+            if (!is_array($data)) {
                 return [];
             }
             $class     = (class_exists($class) ? $class : self::class);
@@ -36,6 +42,17 @@
         }
 
         /**
+         * Prüft, ob der angefragte Key existiert
+         *
+         * @param $key
+         *
+         * @return bool
+         */
+        public function has($key): bool {
+            return array_key_exists($key, $this->data);
+        }
+
+        /**
          * Key aus Daten-Array holen oder Standardwert zurückgeben
          *
          * @param mixed $key
@@ -44,7 +61,7 @@
          * @return mixed|null
          */
         public function get($key, $default = null) {
-            return array_key_exists($key, $this->data) ? $this->data[$key] : $default;
+            return $this->has($key) ? $this->data[$key] : $default;
         }
 
         /**
@@ -56,6 +73,22 @@
          */
         public function __get($key) {
             return $this->get($key);
+        }
+
+        public function offsetExists($offset): bool {
+            return $this->has($offset);
+        }
+
+        public function offsetGet($offset) {
+            return $this->get($offset);
+        }
+
+        public function offsetSet($offset, $value) {
+            return;
+        }
+
+        public function offsetUnset($offset) {
+            return;
         }
 
     }

@@ -19,7 +19,7 @@
         /**
          * Gibt vorläufige Verträge zurück
          *
-         * @return array|null|ProposedContract
+         * @return array|null|ProposedContract[]
          */
         public function contracts(): ?array {
             $this->offered_contracts ??= ProposedContract::fabricate($this->contracts, ProposedContract::class);

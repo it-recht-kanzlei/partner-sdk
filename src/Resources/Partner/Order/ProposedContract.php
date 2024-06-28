@@ -11,7 +11,7 @@
      * @property string|int  $bundle                Bundle-ID
      * @property float       $price                 Monatlicher Preis des Vertrags
      * @property string      $name                  Name des Vertrags
-     * @property array       $docs                  Dokumente
+     * @property array[]     $docs                  Dokumente
      * @property null|string $contract_minimum_date Mindestvertragslaufzeit
      */
     class ProposedContract extends BaseApiResource {

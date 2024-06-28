@@ -48,16 +48,11 @@
      *                               Modifizieren Sie diesen Wert nur, wenn wir Ihnen für den jeweiligen
      *                               Anwandungsfall explizit mitgeteilt haben, dass ein anderer Wert als der
      *                               Standardwert verwendet werden soll.
-     * @param int         $maxlength Optional: Länge auf die der Token gekürzt wird.
-     *                               Modifizieren Sie diesen Wert nur, wenn explizit angefordert.
      *
      * @return string
      */
-    function totp(string $data = '', ?string $secret = null, ?int $period = 3600, int $maxlength = 20): string {
-        $secret = $secret ?? Config::TOTP_SECRET;
-        $hash   = hash('sha256', (int)(time() / $period) . $secret . $data);
-
-        return ($maxlength ? substr($hash, 0, abs($maxlength)) : $hash);
+    function totp(string $data = '', ?string $secret = null, ?int $period = 3600): string {
+        return hash('sha256', (int)(time() / $period) . ($secret ?? Config::TOTP_SECRET) . $data);
     }
 
     /**
