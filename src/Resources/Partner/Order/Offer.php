@@ -22,9 +22,9 @@
          * @return array|null|ProposedContract
          */
         public function contracts(): ?array {
-            $this->contracts ??= ProposedContract::fabricate($this->contracts);
+            $this->offered_contracts ??= ProposedContract::fabricate($this->contracts);
 
-            return $this->contracts;
+            return $this->offered_contracts;
         }
 
     }
