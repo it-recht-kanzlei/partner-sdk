@@ -48,7 +48,7 @@ zu haben, Operationen zu simulieren, gibt es den Sandbox Modus.
 Die offene API stellt Endpunkte zur Verfügung für die keine Authentifizierung erforderlich ist, beispielsweise zum
 Abrufen von Dokumenten oder dem Ländercode-Mapping.
 
-**[Anleitung zur Verwendung der offenen API aufrufen](docs/get-api.md)**
+**[Anleitung zur Verwendung der offenen API aufrufen](docs/public-data-api.md)**
 
 # Info und Kontakt
 
