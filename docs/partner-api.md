@@ -8,7 +8,6 @@ Die Partner API ermöglicht das Platzieren und Abrufen von Bestellungen.
     - [Bestellung platzieren](#bestellung-2---bestellung-ausführen)
     - [Verträge abrufen](#verträge-abrufen)
 - [Kunden Autologin-URL](#kunden-autologin-url)
-- [Info und Kontakt](#info-und-kontakt)
 
 ## SDK Setup und Verwendung
 
@@ -380,3 +379,13 @@ Array
 ```
 
 </details>
+
+# Kunden Autologin-URL
+
+Mit einer speziellen URL kann ein Kunde/Mandant sich im Mandantenportal einloggen ohne Benutzerdaten einzugeben.
+
+```php
+# Kontakt-Hash übergeben um URL zu generieren
+$partner_api->contactLoginUrl('8273c2df485cbbed63d37abaea8e2025f56d0e4505d5ddddfb774e2515e7f848');
+```
+
