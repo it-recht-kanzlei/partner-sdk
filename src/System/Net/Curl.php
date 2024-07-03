@@ -11,13 +11,15 @@
      */
     class Curl {
 
-        /** @var string URL zu der die Verbindung aufgebaut werden soll */
-        protected string $url;
+        /** @var string Der URL-Pfad - dieser Pfad wird (falls definiert) NACH $staticUrlPath mit angehängt */
         protected string $path = '';
+
         /** @var array Hält Informationen zum zuletzt ausgeführten cUrl request */
         protected array $lastInfo = [];
+
         /** @var array Die cUrl Options, die beim zuletzt ausgeführten request verwendet wurden */
         protected array $lastOptions = [];
+
         /** @var null|bool|string Der Response des zuletzt abgesendeten cUrl requests */
         protected $lastResponse;
 
@@ -31,9 +33,11 @@
         /** @var string Requset Method */
         protected string $requestMethod = 'GET';
 
+        /** @var array Optional: diverse Request Parameter */
         protected array $urlParams = [];
 
-        protected string $staticUrlPath = '';
+        /** @var string Start-Pfad der nach dem Domain-Part statisch eingefügt wird */
+        protected string $staticUrlPath;
 
         /** @var array Standard cUrl Optionen */
         protected array $curl_options = [
@@ -93,31 +97,18 @@
         }
 
         /**
-         * @param string $url
+         * @param string $path
          *
          * @return $this
          */
-        public function setUrl(string $url): self {
-            $this->url = $url;
+        public function setPath(string $path): self {
+            $this->path = trim($path, '/');
 
             return $this;
         }
 
         /**
-         * @param string|null $path
-         *
-         * @return $this
-         */
-        public function setPath(?string $path): self {
-            if ($path !== null) {
-                $this->path = $path;
-            }
-
-            return $this;
-        }
-
-        /**
-         * Legt einen Pfad fest, der für alle Requests aus diesem Objekt heraus gilt.
+         * Legt einen Start-Pfad fest, der für alle Requests aus diesem Objekt heraus gilt.
          *
          * @param string $path
          *
@@ -270,7 +261,7 @@
          * @return $this
          */
         public function method(string $method): Curl {
-            $this->requestMethod = mb_strtoupper($method);
+            $this->requestMethod = strtoupper($method);
 
             return $this;
         }
@@ -288,6 +279,13 @@
             return $this;
         }
 
+        /**
+         * @return string
+         */
+        public function getUrl(): string {
+            return url([$this->staticUrlPath, $this->path], $this->urlParams);
+        }
+
         # -- Send request
 
         /**
@@ -299,11 +297,8 @@
          */
         public function send(array $url_params = []): BaseApiResponse {
             $this->addUrlParams($url_params);
-            $path = $this->path;
-            if ($this->staticUrlPath !== '') {
-                $path = $this->staticUrlPath . '/' . $this->path;
-            }
-            $ch = curl_init(url($path, $this->urlParams));
+            $url = $this->getUrl();
+            $ch  = curl_init($url);
 
             # cUrl Optionen festlegen
             curl_setopt_array($ch, $this->getCurlOptions());

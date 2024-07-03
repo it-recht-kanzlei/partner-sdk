@@ -7,8 +7,8 @@
     use Itrk\Resources\Partner\Order\Contract;
     use Itrk\Resources\Partner\Order\Order;
     use Itrk\Resources\Partner\Order\ProposedOrder;
-    use Itrk\System\Config;
-    use Itrk\System\Net\Curl;
+    use Itrk\System\Enums\Country;
+    use Itrk\System\Enums\Salut;
     use function Itrk\totp;
     use function Itrk\url;
 
@@ -23,9 +23,6 @@
         /** @var string Ihr Partner-Token, den wir Ihnen mitgeteilt haben */
         protected string $partner_token = '';
 
-        /** @var Curl Stellt die Verbindung her und legt automatisch alle benötigten Werte und Parameter fest */
-        protected Curl $curl;
-
         /**
          * @param int    $partner_id    Ihre Partner-ID
          * @param string $partner_token Ihr Ihnen bereits mitgeteilter Partner-Token
@@ -33,13 +30,6 @@
         public function __construct(int $partner_id, string $partner_token) {
             $this->setPartnerId($partner_id);
             $this->setPartnerToken($partner_token);
-
-            $this->curl = new Curl();
-            $this->curl->prependUrlPath('itrk-api/partner');
-            $this->curl->addHeaders([
-                'X-Auth-Partner-Token' => $this->partner_token,
-                'X-Api-Secret'         => totp()
-            ]);
         }
 
         /**
@@ -161,7 +151,7 @@
          *
          * @return BaseApiResource|ProposedOrder
          */
-        public function initOrder(string $email, string $display_name, string $first_name, string $last_name, string $street, string $zip, string $city, int $country = Config::COUNTRY_GERMANY, int $salut = Config::SALUT_OTHERS, array $documents = [], array $bundles = []): ProposedOrder {
+        public function initOrder(string $email, string $display_name, string $first_name, string $last_name, string $street, string $zip, string $city, int $country = Country::GERMANY, int $salut = Salut::OTHERS, array $documents = [], array $bundles = []): ProposedOrder {
             $order_data = [
                 'order' => [
                     'customer' => [

@@ -12,6 +12,9 @@
     class BaseApi {
 
         /**
+         * Gibt das (und ggf. vorkonfigurierte) Curl Objekt zurück, das für das aktuelle Api Objekt verwendet werden
+         * soll.
+         *
          * @return Curl
          */
         public function curl(): Curl {

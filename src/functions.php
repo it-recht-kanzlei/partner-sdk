@@ -7,16 +7,20 @@
     /**
      * Baut eine URL für den hinterlegten Host und gibt sie zurück
      *
-     * @param string      $to
-     * @param array       $params
-     * @param string|null $hostname
+     * @param string|array $to     URI Pfad
+     * @param array        $params Optional: Request Parameter
      *
      * @return string
      */
-    function url(string $to = '', array $params = [], ?string $hostname = null): string {
-        $url = 'https://' . ($hostname ?? Config::getHostname());
-        $to  = str_replace('/', '/', trim($to, '/'));
-        $to  = $to === '' ? '' : '/' . $to;
+    function url($to = '', array $params = []): string {
+        $to = (array)$to;
+        foreach ($to as $k => &$path) {
+            $path = trim((string)$path, '/');
+            if ($path === '') {
+                unset($to[$k]);
+            }
+        }
+        $url = Config::getBaseUrl();
 
         $data = [];
         if (Config::isSandboxMode()) {
@@ -24,7 +28,7 @@
         }
         $data = array_replace($data, $params);
 
-        return $url . $to . ($params ? '?' . http_build_query($data) : '');
+        return $url . ($to ? '/' . implode('/', $to) : '') . ($params ? '?' . http_build_query($data) : '');
     }
 
     /**

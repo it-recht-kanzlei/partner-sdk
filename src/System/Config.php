@@ -9,32 +9,27 @@
 
         public const TOTP_SECRET = 'YpAGuzXGin2cGs7hvHj5Ltk3yiFsPZso';
 
-        # Anrede
-        public const SALUT_MALE   = 10;
-        public const SALUT_FEMALE = 11;
-        public const SALUT_OTHERS = 12;
-
-        /** @var int Länder-ID Eine Liste der möglichen Länder IDs kann unter `/itrk-api/get/countries` (offener Endpunkt) abgerufen werden */
-        public const COUNTRY_GERMANY = 500;
-
         /** @var string Ggf. erfordern manche Testing-Hosts Basic Auth */
         public static string $basicAuthUsername = '';
         public static string $basicAuthPassword = '';
 
         # Configurations
 
-        protected static string $hostname = 'it-recht-kanzlei.de';
+        /** @var string Base-URL zu der die Verbindung aufgebaut wird */
+        protected static string $baseUrl = 'https://it-recht-kanzlei.de';
+
+        /** @var bool Sandbox-Modus */
         protected static bool $sandboxMode = false;
 
         /**
          * Hostname festlegen
          *
-         * @param string $hostname
+         * @param string $baseUrl
          *
          * @return void
          */
-        public static function setHostname(string $hostname) {
-            self::$hostname = $hostname;
+        public static function setBaseUrl(string $baseUrl) {
+            self::$baseUrl = $baseUrl;
         }
 
         /**
@@ -42,8 +37,8 @@
          *
          * @return string
          */
-        public static function getHostname(): string {
-            return self::$hostname;
+        public static function getBaseUrl(): string {
+            return self::$baseUrl;
         }
 
         /**

@@ -18,10 +18,11 @@ Die Partner-API dient zum Ausführen von Bestellungen und Abrufen von Verträgen
 
 ## Auf Testumgebung arbeiten
 
-Wir haben Ihnen ggf. mitgeteilt, welchen unserer Server Sie zum Testen verwenden sollen. Legen Sie diesen einmalig fest.
+Wir haben Ihnen ggf. mitgeteilt, ob und welchen unserer Server Sie zum Testen verwenden können. Legen Sie diesen
+einmalig fest.
 
 ```php
-\Itrk\System\Config::setHostname('testsystem.it-recht-kanzlei.de');
+\Itrk\System\Config::setBaseUrl('https://testsystem.it-recht-kanzlei.de');
 ```
 
 Ggf. wird ein Basic Auth benötigt, die entsprechenden Daten können Sie wie folgt festlegen:

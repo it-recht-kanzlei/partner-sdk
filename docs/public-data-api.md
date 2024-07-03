@@ -41,7 +41,7 @@ Itrk\Resources\PublicData\Document Object
 )
 ```
 
-> Der Response für mehrere Dokumente ist identisch, nur dass dabei mehrere in `Document` Objekte in einem Array
+> Der Response für mehrere Dokumente ist identisch, nur dass dabei mehrere `Document` Objekte in einem Array
 > zurückgegeben werden.
 
 ## Ländercode-Mapping abrufen

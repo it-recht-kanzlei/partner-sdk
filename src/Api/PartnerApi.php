@@ -26,7 +26,7 @@
         }
 
         /**
-         * Parameterisiert die cUrl Verbindung und gibt sie zurück
+         * Konfiguriert die cUrl Verbindung mit den für die Partner-Api notwendigen Parametern und gibt sie zurück
          *
          * @return Curl
          */
@@ -36,7 +36,7 @@
                     'X-Auth-Partner-Token' => $this->partnerToken,
                     'X-Api-Secret'         => totp()
                 ])
-                ->prependUrlPath('itrk-api/partner');
+                ->prependUrlPath('/itrk-api/partner');
         }
 
         /**
@@ -77,7 +77,7 @@
         /**
          * Gibt alle Verträge einer bestimmten Bestellung zurück
          *
-         * @param string $order_id
+         * @param string $order_id Die Order ID bzw Order Hash
          *
          * @return Contract[]
          */
@@ -86,7 +86,7 @@
         }
 
         /**
-         * Bestellvorgang einleiten
+         * Bestellschritt #1 - Bestellvorgang einleiten
          *
          * @param array $data
          *
@@ -97,7 +97,7 @@
         }
 
         /**
-         * Bestellung ausführen
+         * Bestellschritt #2 - Bestellung ausführen
          *
          * @param array $data
          *

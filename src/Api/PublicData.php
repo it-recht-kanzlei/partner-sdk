@@ -19,7 +19,7 @@
          * @return Curl
          */
         public function curl(): Curl {
-            return parent::curl()->prependUrlPath('itrk-api/get');
+            return parent::curl()->prependUrlPath('/itrk-api/get');
         }
 
         /**

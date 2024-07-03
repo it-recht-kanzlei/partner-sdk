@@ -6,7 +6,7 @@
     use function Itrk\get_array_item;
 
     /**
-     * Diese Klasse kapselt den Response der Api in ein dafür vorgesehenes (hiervon erbendes) Objekt.
+     * Diese Klasse kapselt den Response der Api in ein dafür vorgesehenes Objekt.
      */
     class BaseApiResponse {
 
