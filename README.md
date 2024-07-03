@@ -2,9 +2,9 @@
 
 Dieses SDK bietet Unterstützung bei der Einrichtung und Verbindung unserer Dienste und APIs.
 
-# Einbinden des SDK
+# Installation und Einbindung des SDK
 
-Fügen Sie das SDK wie gewöhnlich via Composer hinzu:
+Fügen Sie das SDK via [Composer](https://getcomposer.org/) hinzu:
 
 ```shell
 composer require it-recht-kanzlei/itrk-partner-sdk
@@ -12,7 +12,7 @@ composer require it-recht-kanzlei/itrk-partner-sdk
 
 Die Partner-API dient zum Ausführen von Bestellungen und Abrufen von Verträgen.
 
-**[Anleitung zur Verwendung der Partner API aufrufen](docs/partner-api.md)**
+**[⇨ Anleitung zur Verwendung der Partner API aufrufen ⇦](docs/partner-api.md)**
 
 # Startparameter (Optional)
 
@@ -49,7 +49,7 @@ zu haben, Operationen zu simulieren, gibt es den Sandbox Modus.
 Die offene API stellt Endpunkte zur Verfügung für die keine Authentifizierung erforderlich ist, beispielsweise zum
 Abrufen von Dokumenten oder dem Ländercode-Mapping.
 
-**[Anleitung zur Verwendung der offenen API aufrufen](docs/public-data-api.md)**
+**[⇨ Anleitung zur Verwendung der offenen API aufrufen ⇦](docs/public-data-api.md)**
 
 # Info und Kontakt
 
