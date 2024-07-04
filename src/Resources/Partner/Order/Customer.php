@@ -7,7 +7,7 @@
     /**
      * Kundendaten
      *
-     * @property string $hash          Hash
+     * @property string $hash          Mandanten-Hash
      */
     class Customer extends BaseApiResource {
 

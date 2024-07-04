@@ -6,6 +6,7 @@
     use Itrk\Resources\Partner\Order\Contract;
     use Itrk\Resources\Partner\Order\Order;
     use Itrk\Resources\Partner\Order\ProposedOrder;
+    use Itrk\SDK\PartnerAPI\PartnerApiSdk;
     use Itrk\System\Net\Curl;
     use function Itrk\totp;
 
@@ -16,6 +17,7 @@
      */
     class PartnerApi extends BaseApi {
 
+        /** @var string Der Partner-Token der Ihnen mitgeteilt wurde bzw der Ihnen im Mandanten-Portal angezeigt wird */
         protected string $partnerToken = '';
 
         /**
@@ -55,18 +57,23 @@
          */
         public function contracts(int $limit = null, int $offset = 0, string $order_id = '', array $ids = [], bool $with_documents = false): array {
             $params = [];
+            # Verträge abrufen die zu einer bestimmten Bestellung gehören
             if ($order_id) {
                 $params['order'] = $order_id;
             }
+            # Eine Liste kommagetrennter Vertrags-IDs
             if ($ids) {
                 $params['ids'] = implode(',', $ids);
             }
+            # Limit für die Abfrage
             if ($limit) {
                 $params['limit'] = $limit;
             }
+            # Offset für die Abfrage
             if ($offset) {
                 $params['offset'] = $offset;
             }
+            # Legt fest, ob zugehörige Dokumente mit abgefragt werden
             if ($with_documents) {
                 $params['with_documents'] = 1;
             }
@@ -91,6 +98,7 @@
          * @param array $data
          *
          * @return BaseApiResource|ProposedOrder
+         * @see PartnerApiSdk::initOrder()
          */
         public function initOrder(array $data): ProposedOrder {
             return $this->curl()->post('order', $data)->send()->toResource(ProposedOrder::class);
@@ -99,9 +107,10 @@
         /**
          * Bestellschritt #2 - Bestellung ausführen
          *
-         * @param array $data
+         * @param array $data Array von Daten
          *
          * @return BaseApiResource|Order
+         * @see PartnerApiSdk::placeOrder()
          */
         public function placeOrder(array $data): Order {
             return $this->curl()->post('order', $data)->send()->toResource(Order::class);
