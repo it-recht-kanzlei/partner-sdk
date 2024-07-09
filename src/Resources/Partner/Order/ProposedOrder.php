@@ -55,10 +55,10 @@
          * Diese Daten werden für den nächsten Schritt benötigt, um die Bestellung mit den festgelegten Parametern
          * verbindlich auszuführen.
          *
-         * @return array[]
+         * @return string
          */
-        public function confirmData(): array {
-            return ['order' => ['data' => $this->offer()->order, 'checksum' => $this->offer()->checksum]];
+        public function confirmData(): string {
+            return $this->offer()->data;
         }
 
     }
