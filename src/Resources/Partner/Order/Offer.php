@@ -8,7 +8,7 @@
      * @property string  $order_id    Bestellnummer
      * @property float   $total_price Gesamtpreis pro Monat
      * @property array[] $contracts   Verträge
-     * @property string  $data        Base64-String der an uns zurückgesendet werden muss, um die Order zu platzieren
+     * @property string  $order_data        Base64-String der an uns zurückgesendet werden muss, um die Order zu platzieren
      */
     class Offer extends BaseApiResource {
 

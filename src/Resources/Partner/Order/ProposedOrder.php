@@ -58,7 +58,7 @@
          * @return string
          */
         public function confirmData(): string {
-            return $this->offer()->data;
+            return $this->offer()->order_data;
         }
 
     }
