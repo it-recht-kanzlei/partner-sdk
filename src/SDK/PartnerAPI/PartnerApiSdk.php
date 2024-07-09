@@ -181,12 +181,12 @@
          * Mit den Daten und der Prüfsumme die bei der Bestell-Einleitung zurückgegeben wurden, kann die Bestellung
          * im zweiten Schritt final platziert werden.
          *
-         * @param array $confirm_data
+         * @param string $confirm_data
          *
          * @return Order
          * @see ProposedOrder::confirmData()
          */
-        public function placeOrder(array $confirm_data): Order {
+        public function placeOrder(string $confirm_data): Order {
             return $this->api()->placeOrder($confirm_data);
         }
 

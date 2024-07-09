@@ -107,12 +107,12 @@
         /**
          * Bestellschritt #2 - Bestellung ausführen
          *
-         * @param array $data Array von Daten
+         * @param string $data Bestellbestätigung Daten
          *
          * @return BaseApiResource|Order
          * @see PartnerApiSdk::placeOrder()
          */
-        public function placeOrder(array $data): Order {
+        public function placeOrder(string $data): Order {
             return $this->curl()->post('order', $data)->send()->toResource(Order::class);
         }
 
