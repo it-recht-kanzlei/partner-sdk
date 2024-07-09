@@ -15,10 +15,15 @@
 
         /**
          * @param $data
+         *
+         * @throws \Exception
          */
         public function __construct($data) {
             $this->body = (string)$data;
             $this->data = json_decode($this->body, true) ?: [];
+            if ($this->errors()) {
+                throw new \Exception('Beim Ausführen der Bestellung sind Fehler aufgetreten');
+            }
         }
 
         /**
@@ -56,6 +61,14 @@
          */
         public function data(): array {
             return (array)$this->get('data');
+        }
+
+        public function message() {
+            return (string)$this->get('message');
+        }
+
+        public function errors() {
+            return (array)$this->get('errors');
         }
 
         /**
