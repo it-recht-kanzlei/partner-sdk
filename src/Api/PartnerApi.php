@@ -113,7 +113,7 @@
          * @see PartnerApiSdk::placeOrder()
          */
         public function placeOrder(string $data): Order {
-            return $this->curl()->post('order', $data)->send()->toResource(Order::class);
+            return $this->curl()->post('order', ['order' => ['data' => $data]])->send()->toResource(Order::class);
         }
 
     }
