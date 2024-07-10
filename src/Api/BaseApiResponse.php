@@ -22,7 +22,7 @@
             $this->body = (string)$data;
             $this->data = json_decode($this->body, true) ?: [];
             if ($this->errors()) {
-                throw new \Exception('Beim Ausführen der Bestellung sind Fehler aufgetreten');
+                throw new \Exception("Beim Ausführen der Bestellung sind Fehler aufgetreten:\n" . implode("\n", $this->errors()));
             }
         }
 
